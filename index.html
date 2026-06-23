@@ -1313,20 +1313,20 @@ gtag('config', 'G-2M6V79H761');
       // Mobile Menu Toggle Logic
       const mobileMenuBtn = document.getElementById('mobile-menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
-      const mobileMenuIcon = document.getElementById('mobile-menu-icon');
       
       if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', () => {
+          const currentIcon = document.getElementById('mobile-menu-icon');
           const isOpen = mobileMenu.classList.contains('translate-x-0');
           if (isOpen) {
             mobileMenu.classList.add('translate-x-full');
             mobileMenu.classList.remove('translate-x-0');
-            mobileMenuIcon.setAttribute('data-lucide', 'menu');
+            if (currentIcon) currentIcon.setAttribute('data-lucide', 'menu');
             document.body.classList.remove('overflow-hidden');
           } else {
             mobileMenu.classList.remove('translate-x-full');
             mobileMenu.classList.add('translate-x-0');
-            mobileMenuIcon.setAttribute('data-lucide', 'x');
+            if (currentIcon) currentIcon.setAttribute('data-lucide', 'x');
             document.body.classList.add('overflow-hidden');
           }
           lucide.createIcons({
@@ -1338,9 +1338,10 @@ gtag('config', 'G-2M6V79H761');
         const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
         mobileNavLinks.forEach(link => {
           link.addEventListener('click', () => {
+            const currentIcon = document.getElementById('mobile-menu-icon');
             mobileMenu.classList.add('translate-x-full');
             mobileMenu.classList.remove('translate-x-0');
-            mobileMenuIcon.setAttribute('data-lucide', 'menu');
+            if (currentIcon) currentIcon.setAttribute('data-lucide', 'menu');
             document.body.classList.remove('overflow-hidden');
             lucide.createIcons({
               strokeWidth: 1.5
