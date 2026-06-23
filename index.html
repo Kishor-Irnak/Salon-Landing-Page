@@ -65,6 +65,56 @@ border: 1px solid rgba(255, 255, 255, 0.3);
   border: 0;
   background: transparent;
 }
+
+/* Scroll Reveal Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-100 { transition-delay: 100ms; }
+.reveal-delay-200 { transition-delay: 200ms; }
+.reveal-delay-300 { transition-delay: 300ms; }
+.reveal-delay-400 { transition-delay: 400ms; }
+.reveal-delay-500 { transition-delay: 500ms; }
+
+/* Hero Entrance Keyframes & Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.animate-delay-200 {
+  animation-delay: 200ms;
+}
+.animate-delay-400 {
+  animation-delay: 400ms;
+}
+.animate-delay-600 {
+  animation-delay: 600ms;
+}
+
+/* Hover Lift micro-animations */
+.hover-lift {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -15px rgba(152, 106, 62, 0.15);
+}
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
 <meta name="aura-font-heading-class" content="font-newsreader">
@@ -139,16 +189,16 @@ gtag('config', 'G-2M6V79H761');
 
           <!-- Content -->
           <div class="relative z-10 max-w-3xl flex flex-col items-center">
-            <h1 class="text-5xl md:text-7xl lg:text-[6rem] leading-[1.02] mb-6 max-w-4xl tracking-tight font-newsreader font-light">
+            <h1 class="text-5xl md:text-7xl lg:text-[6rem] leading-[1.02] mb-6 max-w-4xl tracking-tight font-newsreader font-light animate-fade-in-up">
               Royal hair, wise hands, homestyle care
             </h1>
-            <p class="text-lg md:text-xl text-white/80 max-w-xl font-newsreader font-light">
+            <p class="text-lg md:text-xl text-white/80 max-w-xl font-newsreader font-light animate-fade-in-up animate-delay-200">
               Empire Owl is a highly rated independent salon in Langford, BC,
               blending elevated cuts, lived-in color, extensions, brows, lashes,
               and micro tattoos with warm, one-on-one attention.
             </p>
 
-            <button class="flex gap-2 hover:bg-white/20 transition-all group text-sm font-medium text-white bg-white/10 border-white/20 border rounded-full mt-10 pt-3 pr-6 pb-3 pl-6 backdrop-blur-md gap-x-2 gap-y-2 items-center font-sans">
+            <button class="flex gap-2 hover:bg-white/20 transition-all group text-sm font-medium text-white bg-white/10 border-white/20 border rounded-full mt-10 pt-3 pr-6 pb-3 pl-6 backdrop-blur-md gap-x-2 gap-y-2 items-center font-sans animate-fade-in-up animate-delay-400">
               <span class="flex items-center justify-center bg-white text-black rounded-full size-6">
                 <i data-lucide="arrow-right" class="size-3.5 group-hover:translate-x-0.5 transition-transform"></i>
               </span>
@@ -190,7 +240,7 @@ gtag('config', 'G-2M6V79H761');
 
     <!-- Introduction Section -->
     <section class="py-20 px-6">
-      <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
+      <div class="max-w-4xl mx-auto text-center flex flex-col items-center reveal">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-xs font-medium uppercase tracking-wider text-primary mb-8 font-sans">
           <span class="size-1.5 rounded-full bg-primary"></span>
           Independent Langford Salon
@@ -211,7 +261,7 @@ gtag('config', 'G-2M6V79H761');
     <!-- Image Grid -->
     <section class="py-16 px-6 overflow-hidden">
       <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 reveal">
           <div class="">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-xs font-medium uppercase tracking-wider text-primary mb-4 font-sans">
               <span class="size-1.5 rounded-full bg-primary"></span>
@@ -227,7 +277,7 @@ gtag('config', 'G-2M6V79H761');
           </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch">
-          <div class="md:col-span-3 grid grid-cols-2 md:grid-cols-1 gap-5">
+          <div class="md:col-span-3 grid grid-cols-2 md:grid-cols-1 gap-5 reveal">
             <div class="relative rounded-[2rem] overflow-hidden min-h-[220px] md:min-h-[300px] shadow-sm group">
               <img src="./assets/blowout_style.png" alt="Precision haircut styling" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
               <div class="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent"></div>
@@ -247,7 +297,7 @@ gtag('config', 'G-2M6V79H761');
               </div>
             </div>
           </div>
-          <div class="md:col-span-6 relative rounded-[2.5rem] overflow-hidden min-h-[520px] shadow-xl shadow-primary/10 group">
+          <div class="md:col-span-6 relative rounded-[2.5rem] overflow-hidden min-h-[520px] shadow-xl shadow-primary/10 group reveal reveal-delay-200">
             <img src="./assets/salon_interior.png" alt="Salon color appointment" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
             <div class="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.68),rgba(0,0,0,0.08)),radial-gradient(circle_at_25%_20%,rgba(255,255,255,0.28),transparent_28%)]"></div>
             <div class="absolute top-6 right-6 bg-white/15 backdrop-blur-xl border border-white/25 rounded-full px-4 py-2 text-white text-xs font-semibold flex items-center gap-2 font-sans">
@@ -280,7 +330,7 @@ gtag('config', 'G-2M6V79H761');
               </div>
             </div>
           </div>
-          <div class="md:col-span-3 grid grid-cols-1 gap-5">
+          <div class="md:col-span-3 grid grid-cols-1 gap-5 reveal reveal-delay-400">
             <div class="relative rounded-[2rem] overflow-hidden min-h-[250px] shadow-sm group">
               <img src="./assets/blowout_style.png" alt="Fresh salon blowout" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
               <div class="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent"></div>
@@ -320,7 +370,7 @@ gtag('config', 'G-2M6V79H761');
     <!-- Services Accordion -->
     <section class="py-24 px-6 bg-background">
       <div class="max-w-4xl mx-auto">
-        <div class="flex flex-col items-center mb-16 text-center">
+        <div class="flex flex-col items-center mb-16 text-center reveal">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-xs font-medium uppercase tracking-wider text-primary mb-4 font-sans">
             <span class="size-1.5 rounded-full bg-primary"></span>
             Service Menu
@@ -330,7 +380,7 @@ gtag('config', 'G-2M6V79H761');
           </h2>
         </div>
 
-        <div class="space-y-4">
+        <div class="space-y-4 reveal">
           <!-- Accordion Item 1 (Expanded) -->
           <div class="border border-border bg-white rounded-3xl p-6 md:p-8 shadow-sm transition-all">
             <div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
@@ -668,16 +718,16 @@ gtag('config', 'G-2M6V79H761');
 
     <!-- Care that puts your child first section -->
     <section class="py-24 px-6 text-center">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-xs font-medium uppercase tracking-wider text-primary mb-6 font-sans">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-xs font-medium uppercase tracking-wider text-primary mb-6 font-sans reveal">
         <span class="size-1.5 rounded-full bg-primary"></span>
         Why Locals Choose Us
       </div>
-      <h2 class="text-4xl md:text-5xl mb-16 max-w-xl mx-auto font-newsreader font-light">
+      <h2 class="text-4xl md:text-5xl mb-16 max-w-xl mx-auto font-newsreader font-light reveal reveal-delay-100">
         Beauty that feels personal, polished, and never rushed
       </h2>
 
       <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 text-left">
-        <div class="lg:col-span-5 bg-secondary rounded-[2.5rem] p-2 relative overflow-hidden shadow-sm min-h-[560px]">
+        <div class="lg:col-span-5 bg-secondary rounded-[2.5rem] p-2 relative overflow-hidden shadow-sm min-h-[560px] reveal">
           <div class="absolute inset-2 rounded-[2rem] overflow-hidden" id="before-after-slider" style="--slider-pos: 50%;">
             <div class="absolute inset-0">
               <!-- Before Image (Base) -->
@@ -719,8 +769,8 @@ gtag('config', 'G-2M6V79H761');
             </div>
           </div>
         </div>
-        <div class="lg:col-span-4 grid grid-cols-1 gap-6">
-          <div class="bg-secondary rounded-[2.5rem] p-8 min-h-[260px] relative overflow-hidden shadow-sm">
+        <div class="lg:col-span-4 grid grid-cols-1 gap-6 reveal reveal-delay-200">
+          <div class="bg-secondary rounded-[2.5rem] p-8 min-h-[260px] relative overflow-hidden shadow-sm hover-lift">
             <div class="relative z-10 max-w-xs">
               <div class="size-12 rounded-full bg-white text-primary flex items-center justify-center shadow-sm mb-5">
                 <i data-lucide="home" class="size-5"></i>
@@ -735,7 +785,7 @@ gtag('config', 'G-2M6V79H761');
             </div>
             <img src="./assets/salon_tools.png" alt="Salon hair tools and styling" class="absolute -bottom-10 -right-12 w-64 h-64 object-cover rounded-full opacity-35 mix-blend-multiply">
           </div>
-          <div class="bg-white border border-border rounded-[2.5rem] p-7 shadow-sm flex items-center justify-between gap-5">
+          <div class="bg-white border border-border rounded-[2.5rem] p-7 shadow-sm flex items-center justify-between gap-5 hover-lift">
             <div class="">
               <div class="inline-flex text-[0.65rem] uppercase tracking-widest text-primary bg-secondary px-2 py-0.5 rounded-full shadow-sm font-semibold mb-3 font-sans">
                 Free
@@ -752,7 +802,7 @@ gtag('config', 'G-2M6V79H761');
               <i data-lucide="arrow-right" class="size-5 group-hover:translate-x-0.5 transition-transform"></i>
             </a>
           </div>
-          <div class="bg-secondary rounded-[2.5rem] p-7 shadow-sm text-center">
+          <div class="bg-secondary rounded-[2.5rem] p-7 shadow-sm text-center hover-lift">
             <div class="flex -space-x-4 mb-5 justify-center">
               <img src="./assets/client_portrait.png" class="size-16 rounded-full border-4 border-secondary object-cover z-10" alt="Client with styled hair">
               <img src="./assets/client_portrait.png" class="size-20 rounded-full border-4 border-secondary object-cover z-20 -translate-y-2 shadow-lg" alt="Client haircut">
@@ -766,8 +816,8 @@ gtag('config', 'G-2M6V79H761');
             </p>
           </div>
         </div>
-        <div class="lg:col-span-3 grid grid-cols-1 gap-6">
-          <div class="bg-primary text-white rounded-[2.5rem] p-8 shadow-xl shadow-primary/20 relative overflow-hidden">
+        <div class="lg:col-span-3 grid grid-cols-1 gap-6 reveal reveal-delay-400">
+          <div class="bg-primary text-white rounded-[2.5rem] p-8 shadow-xl shadow-primary/20 relative overflow-hidden hover-lift">
             <div class="absolute -right-10 -top-10 size-32 rounded-full bg-white/10"></div>
             <p class="text-[10px] uppercase tracking-widest text-white/60 font-semibold mb-2 font-sans">
               Correction work
@@ -787,7 +837,7 @@ gtag('config', 'G-2M6V79H761');
               </span>
             </div>
           </div>
-          <div class="bg-secondary rounded-[2.5rem] p-7 shadow-sm flex flex-col">
+          <div class="bg-secondary rounded-[2.5rem] p-7 shadow-sm flex flex-col hover-lift">
             <div class="flex text-primary mb-3">
               <i data-lucide="star" class="size-5 fill-current"></i>
               <i data-lucide="star" class="size-5 fill-current"></i>
@@ -1212,6 +1262,21 @@ gtag('config', 'G-2M6V79H761');
         sliderInput.addEventListener('input', (e) => updateSlider(e.target.value));
         sliderInput.addEventListener('change', (e) => updateSlider(e.target.value));
       }
+
+      // Scroll Reveal Logic
+      const revealElements = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
+      revealElements.forEach(el => revealObserver.observe(el));
     </script>
   
 </body></html>
